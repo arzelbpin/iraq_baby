@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block title %}
+  Overview
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/svg.jquery.js"></script>
+   <script type="text/javascript" src="http://kozea.github.com/pygal.js/javascripts/pygal-tooltips.js"></script>
+{% endblock %}
+
+{% block app_content %}
+<div>
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+
+        <div class="row">
+          <div class="col-md">
+            <div class="overview-sub">
+              <h2 class="page-title"> <span> Product Report</span></h2>
+              <h4> Product Name: <span class="badge badge-primary unbold">
+                {{product_name}}
+              </span></h4>
+              <h4> Customer Reviews: <span class="badge badge-primary unbold">{{product_reviews}}</span></h4>
+              <h4> Customer Rating: <span class="badge badge-primary unbold">{{product_rating}}</span></h4> <br>
+              <h3> Amazing Review Adjusted Rating: <span class="badge badge-danger unbold">{{ad_rating}}</span></h3>
+            </div>
+            </div>
+        </div>
+
+      <div class="row">
+        <div class="col-md">
+          <h4 class="figure-title">Review Stars </h4>
+            <div class="container" align="left">
+              <embed id="star-plot" type="image/svg+xml" src={{star_plot|safe}} style='max-width:600px'/>
+            </div>
+        </div>
+        <div class="col-md">
+          <h4 class="figure-title">Review Length </h4>
+            <div class="container" align="left">
+              <embed id="hist-plot" type="image/svg+xml" src={{hist_plot|safe}} style='max-width:600px'/>
+            </div>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="col-md">
+
+          <div class="row">
+            <div class="col-md">
+              <h3 class="add_margin">Customer's Sentiment</h3>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md">
+              <div class="row">
+                <div class="col-md">
+                  <h3>Original - based on ratings:</h3>
+                </div>
+                <div class="col-md">
+                  <img src="../static/img/happy.png" alt="happy-moji" width="100" height="100"> <br><br><h3 class="sentiments"><span class="badge badge-success">{{cs1}}%</span></h3>
+                </div>
+                <div class="col-md">
+                  <img src="../static/img/cry.png" alt="happy-moji" width="100" height="100"> <br><br><h3 class="sentiments"><span class="badge badge-danger">{{cs2}}%</span></h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md">
+              <div class="row">
+                <div class="col-md">
+                  <h3>Pattern Analyzer - based on reviews' polarity:</h3>
+                </div>
+                <div class="col-md">
+                  <img src="../static/img/happy.png" alt="happy-moji" width="100" height="100"> <br><br><h3 class="sentiments"><span class="badge badge-success">{{cs3}}%</span></h3>
+                </div>
+                <div class="col-md">
+                  <img src="../static/img/cry.png" alt="happy-moji" width="100" height="100"> <br><br><h3 class="sentiments"><span class="badge badge-danger">{{cs4}}%</span></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md">
+          <div class="row">
+            <div class="col-md">
+              <h3 class="add_margin">Customer's Insight</h3>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md">
+              <h4>Custmers like this product because:</h4>
+              <img src="../static/wordcloud/{{plot2}}" alt="plot2" width="500" height="300">
+            </div>
+
+            <div class="col-md">
+              <h4>Custmers don't like this product because:</h4>
+              <img src="../static/wordcloud/{{plot1}}" alt="plot1" width="500" height="300">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md">
+          <div class="row">
+            <div class="col-md">
+              <h3 class="add_margin">Monthly Sales <a target="_blank" href="{{url_for('prediction', data=filename)}}" class="badge badge-primary unbold">Make A Prediction</a> </h3>
+            </div>
+          </div>
+
+          <div class="row justify-content-md-center">
+            <div class="col-md-10">
+              <div class="container" align="center">
+                <embed id="sales-plot" type="image/svg+xml" src={{sales_plot|safe}} style='max-width:1200px'/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="row">
+          <div class="col-md overview-sub">
+            <h3 class="add_margin"> Scraped Reivews </h3>
+            <h5><a id="downloadtbn" class="badge badge-primary" href="{{url_for('static_file', path=path)}}">Download <span class="unbold">({{filename}})</span> </a></h5> <h5> <span class="badge badge-success unbold">Only showing 50 most recent reviews, you can download all reviews by clicking the download button.</span> </h5>
+            <div class="reviews">
+               {{ reviews_df_html | safe }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="container-fluid">
+    <div id="footer" class="text-center center-block">
+          <a href="https://github.com/guoqi228" target="_blank"><i id="social-git" class="fa fa-github-square fa-3x social"></i></a>
+          <a href="https://www.linkedin.com/in/guoqi228/" target="_blank"><i id="social-link" class="fa fa-linkedin-square fa-3x social"></i></a>
+          <a href="mailto:clayguo228@gmail.com" target="_blank"><i id="social-mail" class="fa fa-envelope-square fa-3x social"></i></a> <br>
+          <p>© 2018 Author: Clay Guo</p>
+    </div>
+  </div>
+  {% endblock %}

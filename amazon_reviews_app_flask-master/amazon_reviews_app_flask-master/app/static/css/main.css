@@ -1,0 +1,121 @@
+#welcome{
+  text-align: center;
+}
+#main{
+  margin-top: 200px;
+}
+.social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+#social-git{
+  color: #444444;
+}
+#social-link{
+    color: #007BB6;
+}
+#social-mail{
+    color: #c71610;
+}
+#social-git:hover {
+    color: #444444;
+}
+#social-link:hover {
+    color: #007BB6;
+}
+#social-mail:hover {
+    color: #c71610;
+}
+html,body{
+    height: 100%;
+    background: linear-gradient(to right, #ff9900, #e74c3c);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#footer {
+  bottom: 30px;
+  height: 30px;
+  left: 0;
+  position: relative;
+  right: 0;
+}
+table.dataframe, .dataframe th, .dataframe td {
+  margin-top: 50px;
+  border: none;
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
+  text-align:left;
+  padding: 10px;
+  margin-bottom: 40px;
+  font-size: 1em;
+}
+#my_df{
+  margin-top: 20px;
+  overflow-x: scroll;
+}
+.message{
+  float: left;
+  text-align: left;
+}
+#loading{
+  display:block;
+  padding-left: auto;
+  padding-right: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+#submit{
+  display:inline;
+  padding-left: auto;
+  padding-right: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+form.form-inline{
+  display: block;
+  padding-bottom:0px;
+  margin-top:30px;
+  margin-bottom:20px;
+}
+#productId{
+  width: 80%;
+}
+#help-link{
+  padding-top: 5px;
+}
+.overview-sub{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.unbold{
+  font-weight:normal;
+}
+.figure-title{
+  text-align: center;
+}
+.page-title{
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sentiments{
+  margin-left: 10px;
+}
+.add_margin{
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+.add_less_margin{
+  margin-top: 20px;
+}
